@@ -4,7 +4,7 @@ const streamingServices = {
     viaplay: { name: 'Viaplay', favicon: 'https://viaplay.se/favicon.ico', price: 169 },
     disney: { name: 'Disney+', favicon: 'https://www.disneyplus.com/favicon.ico', price: 139 },
     prime: { name: 'Amazon Prime', favicon: 'https://www.primevideo.com/favicon.ico', price: 69 },
-    max: { name: 'Max', favicon: 'https://www.hbomax.com/img/hbomax/favicon.ico', price: 0 },
+    max: { name: 'HBO Max', favicon: 'https://www.hbomax.com/img/hbomax/favicon.ico', price: 169 },
     apple: { name: 'Apple TV+', favicon: 'https://tv.apple.com/favicon.ico', price: 119 },
     skyshowtime: { name: 'SkyShowtime', favicon: 'https://www.skyshowtime.com/favicon.ico', price: 149 },
     tv4play: { name: 'TV4 Play', favicon: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/TV4sweden_logo.svg', price: 169 },
