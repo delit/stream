@@ -1,14 +1,13 @@
 // Streaming services configuration
 const streamingServices = {
-    netflix: { name: 'Netflix', favicon: 'https://www.netflix.com/favicon.ico' },
-    viaplay: { name: 'Viaplay', favicon: 'https://viaplay.se/favicon.ico' },
-    disney: { name: 'Disney+', favicon: 'https://www.disneyplus.com/favicon.ico' },
-    prime: { name: 'Amazon Prime', favicon: 'https://www.primevideo.com/favicon.ico' },
-    max: { name: 'Max', favicon: 'https://www.hbomax.com/img/hbomax/favicon.ico' },
-    apple: { name: 'Apple TV+', favicon: 'https://tv.apple.com/favicon.ico' },
-    skyshowtime: { name: 'SkyShowtime', favicon: 'https://www.skyshowtime.com/favicon.ico' },
-    tv4play: { name: 'TV4 Play', favicon: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/TV4sweden_logo.svg' },
-    discovery: { name: 'Discovery+', favicon: 'https://i.ibb.co/yFzCZTbG/unnamed.png' }
+    netflix: { name: 'Netflix', favicon: 'https://www.netflix.com/favicon.ico', price: 199 },
+    viaplay: { name: 'Viaplay', favicon: 'https://viaplay.se/favicon.ico', price: 169 },
+    disney: { name: 'Disney+', favicon: 'https://www.disneyplus.com/favicon.ico', price: 139 },
+    prime: { name: 'Amazon Prime', favicon: 'https://www.primevideo.com/favicon.ico', price: 69 },
+    max: { name: 'Max', favicon: 'https://www.hbomax.com/img/hbomax/favicon.ico', price: 0 },
+    apple: { name: 'Apple TV+', favicon: 'https://tv.apple.com/favicon.ico', price: 119 },
+    skyshowtime: { name: 'SkyShowtime', favicon: 'https://www.skyshowtime.com/favicon.ico', price: 149 },
+    tv4play: { name: 'TV4 Play', favicon: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/TV4sweden_logo.svg', price: 169 },
 };
 
 // Global variables
@@ -29,6 +28,9 @@ const rotationPreview = document.getElementById('rotationPreview');
 const googleCalendarBtn = document.getElementById('googleCalendarBtn');
 const appleCalendarBtn = document.getElementById('appleCalendarBtn');
 const outlookCalendarBtn = document.getElementById('outlookCalendarBtn');
+const priceSummary = document.getElementById('priceSummary');
+const monthlyCost = document.getElementById('monthlyCost');
+const yearlyCost = document.getElementById('yearlyCost');
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
@@ -100,6 +102,8 @@ function handleServiceSelection(checkbox) {
     } else {
         hidePreview();
     }
+    
+    updatePriceSummary();
 }
 
 
@@ -142,6 +146,32 @@ function showPreview() {
     dateSettingsSection.style.display = 'block';
     calendarSection.style.display = 'block';
     updateRotationPreview();
+}
+
+// Format number with thousands separator
+function formatNumber(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+
+// Update price summary
+function updatePriceSummary() {
+    if (selectedServices.length >= 1) {
+        priceSummary.style.display = 'block';
+        
+        // Calculate total monthly cost
+        const totalMonthlyCost = selectedServices.reduce((total, serviceId) => {
+            return total + streamingServices[serviceId].price;
+        }, 0);
+        
+        // Calculate yearly cost
+        const totalYearlyCost = totalMonthlyCost * 12;
+        
+        // Update display
+        monthlyCost.textContent = `${formatNumber(totalMonthlyCost)} kr`;
+        yearlyCost.textContent = `${formatNumber(totalYearlyCost)} kr`;
+    } else {
+        priceSummary.style.display = 'none';
+    }
 }
 
 // Hide preview section
@@ -357,7 +387,6 @@ function generateServiceLinks() {
         apple: 'https://tv.apple.com/account',
         skyshowtime: 'https://www.skyshowtime.com/account',
         tv4play: 'https://www.tv4play.se/account',
-        discovery: 'https://www.discoveryplus.com/se/account'
     };
     
     let links = '';
