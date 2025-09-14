@@ -189,7 +189,7 @@ function generateGoogleCalendarLink() {
         const startDate = formatDateForGoogle(plan.date);
         const endDate = formatDateForGoogle(new Date(plan.date.getTime() + 24 * 60 * 60 * 1000));
         const serviceNames = plan.services.map(service => service.name).join(', ');
-        const title = `Byt till ${serviceNames}`;
+        const title = `Streaming Rotation`;
         const monthlySchedule = generateMonthlySchedule();
         const serviceLinks = generateServiceLinks();
         const description = `Månadsupplägg:
@@ -252,7 +252,7 @@ METHOD:PUBLISH
         const startDate = formatDateForICS(plan.date);
         const endDate = formatDateForICS(new Date(plan.date.getTime() + 24 * 60 * 60 * 1000));
         const serviceNames = plan.services.map(service => service.name).join(', ');
-        const title = `Byt till ${serviceNames}`;
+        const title = `Streaming Rotation`;
         const serviceLinks = generateServiceLinks();
         const description = `Månadsupplägg:\\n${monthlySchedule}\\n\\nLänkar för uppsägning:\\n${serviceLinks}\\n\\nRotera dina streamingtjänster för optimal kostnadsbesparing.`;
         const uid = `streaming-rotation-${plan.services.map(s => s.name).join('-')}-${startDate}@streaming-rotation.com`;
