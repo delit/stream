@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming Rotation - Rotera mellan streamingtjänster</title>
+    <!-- DNS prefetch and preconnect for optimal font loading -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Content Security Policy for Firefox compatibility -->
+    <meta http-equiv="Content-Security-Policy" content="font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;">
+    
+    <!-- Primary Google Fonts link with all weights -->
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Firefox-specific @import backup -->
+    <style>
+        /* CSS Variables for font management */
+        :root {
+            --font-primary: 'Funnel Display', 'Helvetica Neue', Arial, sans-serif;
+            --font-fallback: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        /* Firefox-specific @import for maximum compatibility */
+        @-moz-document url-prefix() {
+            @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800&display=swap');
+        }
+        
+        /* Universal @import for all other browsers */
+        @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800&display=swap');
+        
+        /* Firefox-specific font smoothing and rendering */
+        @-moz-document url-prefix() {
+            body, h1, h2, h3, h4, h5, h6 {
+                font-family: var(--font-primary) !important;
+                -moz-osx-font-smoothing: grayscale;
+                text-rendering: optimizeLegibility;
+            }
+        }
+        
+        /* Safari-specific optimizations */
+        @supports (-webkit-appearance: none) {
+            body, h1, h2, h3, h4, h5, h6 {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                font-family: var(--font-primary);
+            }
+        }
+        
+        /* Edge-specific support */
+        @supports (-ms-ime-align: auto) {
+            body, h1, h2, h3, h4, h5, h6 {
+                font-family: var(--font-primary);
+            }
+        }
+        
+        /* Chrome-specific optimizations */
+        @supports (display: -webkit-box) {
+            body, h1, h2, h3, h4, h5, h6 {
+                font-family: var(--font-primary);
+                -webkit-font-smoothing: antialiased;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Firefox font override to ensure Funnel Display loads -->
+    <style>
+        /* Critical font override for Firefox */
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary) !important;
+        }
+        
+        /* Firefox-specific font enforcement */
+        @-moz-document url-prefix() {
+            body, h1, h2, h3, h4, h5, h6 {
+                font-family: 'Funnel Display', 'Helvetica Neue', Arial, sans-serif !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Streaming Rotation</h1>
+            <p class="header-description">Spara pengar genom att rotera mellan streamingtjänster varje månad</p>
+        </header>
+
+        <main>
+            <section class="rotation-settings-section">
+                <h2>Streamingtjänster per månad?</h2>
+                <div class="settings-group">
+                    <div class="radio-group">
+                        <input type="radio" id="oneService" name="servicesPerMonth" value="1" checked>
+                        <label for="oneService">1 tjänst</label>
+                        
+                        <input type="radio" id="twoServices" name="servicesPerMonth" value="2">
+                        <label for="twoServices">2 tjänster</label>
+                        
+                        <input type="radio" id="threeServices" name="servicesPerMonth" value="3">
+                        <label for="threeServices">3 tjänster</label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="services-section">
+                <h2>Välj dina streamingtjänster</h2>
+                <p class="instruction">Välj minst 2 tjänster för att aktivera rotation</p>
+                
+                <div class="services-list">
+                    <div class="service-item" data-service="netflix">
+                        <div class="service-info">
+                            <img src="https://www.netflix.com/favicon.ico" alt="Netflix" class="service-favicon" onerror="this.style.display='none'">
+                            <h3>Netflix</h3>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="netflix" name="service" value="netflix">
+                            <label for="netflix"></label>
+                        </div>
+                    </div>
+
+                    <div class="service-item" data-service="apple">
+                        <div class="service-info">
+                            <img src="https://tv.apple.com/favicon.ico" alt="Apple TV+" class="service-favicon" onerror="this.style.display='none'">
+                            <h3>Apple TV+</h3>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="apple" name="service" value="apple">
+                            <label for="apple"></label>
+                        </div>
+                    </div>
+
+                    <div class="service-item" data-service="disney">
+                        <div class="service-info">
+                            <img src="https://www.disneyplus.com/favicon.ico" alt="Disney+" class="service-favicon" onerror="this.style.display='none'">
+                            <h3>Disney+</h3>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="disney" name="service" value="disney">
+                            <label for="disney"></label>
+                        </div>
+                    </div>
+
+                    <div class="service-item" data-service="prime">
+                        <div class="service-info">
+                            <img src="https://www.primevideo.com/favicon.ico" alt="Prime Video" class="service-favicon" onerror="this.style.display='none'">
+                            <h3>Amazon Prime</h3>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="prime" name="service" value="prime">
+                            <label for="prime"></label>
+                        </div>
+                    </div>
+
+                    <div class="service-item" data-service="max">
+                        <div class="service-info">
+                            <img src="https://www.hbomax.com/img/hbomax/favicon.ico" alt="Max" class="service-favicon" onerror="this.style.display='none'">
+                            <h3>Max</h3>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="max" name="service" value="max">
+                            <label for="max"></label>
+                        </div>
+                    </div>
+
+                    <div class="service-item" data-service="viaplay">
+                        <div class="service-info">
+                            <img src="https://viaplay.se/favicon.ico" alt="Viaplay" class="service-favicon" onerror="this.style.display='none'">
+                            <h3>Viaplay</h3>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="viaplay" name="service" value="viaplay">
+                            <label for="viaplay"></label>
+                        </div>
+                    </div>
+
+                    <div class="service-item" data-service="skyshowtime">
+                        <div class="service-info">
+                            <img src="https://www.skyshowtime.com/favicon.ico" alt="SkyShowtime" class="service-favicon" onerror="this.src='https://www.skyshowtime.com/favicon.ico'">
+                            <h3>SkyShowtime</h3>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="skyshowtime" name="service" value="skyshowtime">
+                            <label for="skyshowtime"></label>
+                        </div>
+                    </div>
+
+                    <div class="service-item" data-service="tv4play">
+                        <div class="service-info">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/TV4sweden_logo.svg" alt="TV4 Play" class="service-favicon" onerror="this.style.display='none'">
+                            <h3>TV4 Play</h3>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="tv4play" name="service" value="tv4play">
+                            <label for="tv4play"></label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="preview-section" id="previewSection" style="display: none;">
+                <h2>Din rotationsplan</h2>
+                <div id="rotationPreview" class="rotation-preview"></div>
+            </section>
+
+            <section class="date-settings-section" id="dateSettingsSection" style="display: none;">
+                <h2>Rotationsdatum</h2>
+                <div class="date-settings-group">
+                    <label for="rotationDay">Vilken dag ska rotationen ske?</label>
+                    <select id="rotationDay" name="rotationDay">
+                        <option value="1">1:a</option>
+                        <option value="2">2:a</option>
+                        <option value="3">3:e</option>
+                        <option value="4">4:e</option>
+                        <option value="5">5:e</option>
+                        <option value="6">6:e</option>
+                        <option value="7">7:e</option>
+                        <option value="8">8:e</option>
+                        <option value="9">9:e</option>
+                        <option value="10">10:e</option>
+                        <option value="11">11:e</option>
+                        <option value="12">12:e</option>
+                        <option value="13">13:e</option>
+                        <option value="14">14:e</option>
+                        <option value="15">15:e</option>
+                        <option value="16">16:e</option>
+                        <option value="17">17:e</option>
+                        <option value="18">18:e</option>
+                        <option value="19">19:e</option>
+                        <option value="20">20:e</option>
+                        <option value="21">21:a</option>
+                        <option value="22">22:a</option>
+                        <option value="23">23:e</option>
+                        <option value="24">24:e</option>
+                        <option value="25" selected>25:e</option>
+                        <option value="26">26:e</option>
+                        <option value="27">27:e</option>
+                        <option value="28">28:e</option>
+                        <option value="29">29:e</option>
+                        <option value="30">30:e</option>
+                        <option value="31">31:a</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="calendar-section" id="calendarSection" style="display: none;">
+                <h2>Lägg till i din kalender</h2>
+                <div class="calendar-buttons">
+                    <button id="googleCalendarBtn" class="calendar-btn google">
+                        <img src="https://www.google.com/favicon.ico" alt="Google" class="calendar-icon">
+                        Google Calendar
+                    </button>
+                    <button id="appleCalendarBtn" class="calendar-btn apple">
+                        <img src="https://www.apple.com/favicon.ico" alt="Apple" class="calendar-icon">
+                        Apple Calendar
+                    </button>
+                    <button id="outlookCalendarBtn" class="calendar-btn outlook">
+                        <img src="https://outlook.live.com/favicon.ico" alt="Outlook" class="calendar-icon">
+                        Outlook Calendar
+                    </button>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        // Bullet-proof Firefox font loading solution
+        (function() {
+            'use strict';
+            
+            // Detect Firefox specifically
+            const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+            
+            // Font loading detection with improved accuracy
+            function detectFontSupport(fontFamily) {
+                try {
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    
+                    // Test with fallback font
+                    context.font = '72px Arial, sans-serif';
+                    const fallbackWidth = context.measureText('Test').width;
+                    
+                    // Test with target font
+                    context.font = '72px ' + fontFamily + ', Arial, sans-serif';
+                    const targetWidth = context.measureText('Test').width;
+                    
+                    return Math.abs(fallbackWidth - targetWidth) > 1;
+                } catch (e) {
+                    return false;
+                }
+            }
+            
+            // Firefox-specific font loading with multiple strategies
+            function forceFirefoxFontLoad() {
+                // Strategy 1: Create multiple test elements
+                for (let i = 0; i < 3; i++) {
+                    const testElement = document.createElement('div');
+                    testElement.style.cssText = `
+                        position: absolute;
+                        left: -9999px;
+                        visibility: hidden;
+                        font-family: 'Funnel Display', Arial, sans-serif;
+                        font-size: 16px;
+                        font-weight: 400;
+                    `;
+                    testElement.textContent = 'Funnel Display Test ' + i;
+                    document.body.appendChild(testElement);
+                    
+                    // Force repaint
+                    testElement.offsetHeight;
+                    
+                    // Clean up after a short delay
+                    setTimeout(() => {
+                        if (testElement.parentNode) {
+                            document.body.removeChild(testElement);
+                        }
+                    }, 50);
+                }
+                
+                // Strategy 2: Force CSS variable update
+                setTimeout(() => {
+                    document.documentElement.style.setProperty('--font-primary', "'Funnel Display', 'Helvetica Neue', Arial, sans-serif");
+                }, 100);
+                
+                // Strategy 3: Direct font family assignment
+                setTimeout(() => {
+                    document.body.style.fontFamily = "'Funnel Display', 'Helvetica Neue', Arial, sans-serif";
+                }, 200);
+            }
+            
+            // Universal font loading for all browsers
+            function forceFontLoad() {
+                const testElement = document.createElement('div');
+                testElement.style.cssText = `
+                    position: absolute;
+                    left: -9999px;
+                    visibility: hidden;
+                    font-family: var(--font-primary);
+                    font-size: 16px;
+                `;
+                testElement.textContent = 'Font Loading Test';
+                document.body.appendChild(testElement);
+                
+                // Force repaint
+                testElement.offsetHeight;
+                
+                // Clean up
+                setTimeout(() => {
+                    if (testElement.parentNode) {
+                        document.body.removeChild(testElement);
+                    }
+                }, 100);
+            }
+            
+            // Browser-specific optimizations
+            const userAgent = navigator.userAgent.toLowerCase();
+            
+            if (isFirefox) {
+                // Firefox-specific font loading with multiple strategies
+                forceFirefoxFontLoad();
+                
+                // Additional Firefox font loading trigger
+                setTimeout(() => {
+                    document.body.style.fontFamily = 'var(--font-primary)';
+                }, 300);
+                
+                // Firefox font loading retry
+                setTimeout(() => {
+                    if (!detectFontSupport('Funnel Display')) {
+                        console.log('Retrying font load for Firefox...');
+                        forceFirefoxFontLoad();
+                    }
+                }, 1000);
+                
+            } else if (userAgent.indexOf('safari') > -1 && userAgent.indexOf('chrome') === -1) {
+                // Safari-specific optimizations
+                forceFontLoad();
+            } else if (userAgent.indexOf('edge') > -1 || userAgent.indexOf('edg/') > -1) {
+                // Edge-specific optimizations
+                forceFontLoad();
+            } else {
+                // Chrome and other browsers
+                forceFontLoad();
+            }
+            
+            // Universal font loading check with fallback
+            if ('fonts' in document) {
+                document.fonts.ready.then(() => {
+                    setTimeout(() => {
+                        if (!detectFontSupport('Funnel Display')) {
+                            console.warn('Funnel Display font not loaded, using fallback');
+                            document.documentElement.style.setProperty('--font-primary', 'var(--font-fallback)');
+                        }
+                    }, 500);
+                });
+            }
+            
+            // Additional Firefox-specific retry mechanism
+            if (isFirefox) {
+                setTimeout(() => {
+                    if (!detectFontSupport('Funnel Display')) {
+                        console.log('Final Firefox font retry...');
+                        document.documentElement.style.setProperty('--font-primary', "'Funnel Display', 'Helvetica Neue', Arial, sans-serif");
+                    }
+                }, 2000);
+            }
+        })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
