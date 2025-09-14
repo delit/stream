@@ -34,8 +34,36 @@ const yearlyCost = document.getElementById('yearlyCost');
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
+    resetApplication();
     initializeEventListeners();
 });
+
+// Reset application to initial state
+function resetApplication() {
+    // Clear all checkboxes
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
+    });
+    
+    // Remove selected class from all service items
+    serviceItems.forEach(item => {
+        item.classList.remove('selected');
+    });
+    
+    // Reset global variables
+    selectedServices = [];
+    rotationPlan = [];
+    servicesPerMonth = 1;
+    rotationDay = 25;
+    
+    // Reset UI elements
+    document.getElementById('oneService').checked = true;
+    document.getElementById('rotationDay').value = '25';
+    
+    // Hide sections
+    hidePreview();
+    priceSummary.style.display = 'none';
+}
 
 // Event listeners
 function initializeEventListeners() {
