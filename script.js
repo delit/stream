@@ -7,7 +7,8 @@ const streamingServices = {
     max: { name: 'Max', favicon: 'https://www.hbomax.com/img/hbomax/favicon.ico' },
     apple: { name: 'Apple TV+', favicon: 'https://tv.apple.com/favicon.ico' },
     skyshowtime: { name: 'SkyShowtime', favicon: 'https://www.skyshowtime.com/favicon.ico' },
-    tv4play: { name: 'TV4 Play', favicon: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/TV4sweden_logo.svg' }
+    tv4play: { name: 'TV4 Play', favicon: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/TV4sweden_logo.svg' },
+    discovery: { name: 'Discovery+', favicon: 'https://i.ibb.co/yFzCZTbG/unnamed.png' }
 };
 
 // Global variables
@@ -353,7 +354,8 @@ function generateServiceLinks() {
         max: 'https://www.hbomax.com/account',
         apple: 'https://tv.apple.com/account',
         skyshowtime: 'https://www.skyshowtime.com/account',
-        tv4play: 'https://www.tv4play.se/account'
+        tv4play: 'https://www.tv4play.se/account',
+        discovery: 'https://www.discoveryplus.com/se/account'
     };
     
     let links = '';

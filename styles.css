@@ -198,6 +198,20 @@ header h1 {
     border-radius: 4px;
 }
 
+.service-fallback-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #44BBBB, #2E8B8B);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 12px;
+}
+
 .service-item h3 {
     margin: 0;
     color: #333;
@@ -393,16 +407,24 @@ header h1 {
 
 .calendar-section h2 {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: #333;
     font-size: 1.3rem;
 }
 
+.calendar-description {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
 .calendar-buttons {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
 .calendar-btn {
@@ -464,11 +486,18 @@ header h1 {
 }
 
 /* Footer */
-footer {
+.app-footer {
     text-align: center;
-    color: white;
-    margin-top: 40px;
-    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 30px;
+    padding: 20px 0;
+}
+
+.app-footer p {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
 }
 
 /* Responsiv design */
@@ -504,6 +533,7 @@ footer {
     .calendar-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 15px;
     }
     
     .calendar-btn {

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Streaming Rotation - Rotera mellan streamingtjänster</title>
+    <link rel="icon" href="https://www.discoveryplus.com/se/favicon.png">
     <!-- DNS prefetch and preconnect for optimal font loading -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -86,7 +87,7 @@
     <div class="container">
         <header>
             <h1>Streaming Rotation</h1>
-            <p class="header-description">Spara pengar genom att rotera mellan streamingtjänster varje månad</p>
+            <p class="header-description">Spara pengar genom att rotera mellan streamingtjänster varje månad.</p>
         </header>
 
         <main>
@@ -198,6 +199,18 @@
                             <label for="tv4play"></label>
                         </div>
                     </div>
+
+                    <div class="service-item" data-service="discovery">
+                        <div class="service-info">
+                            <img src="https://i.ibb.co/yFzCZTbG/unnamed.png" alt="Discovery+" class="service-favicon" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                            <div class="service-fallback-icon" style="display: none;">D+</div>
+                            <h3>Discovery+</h3>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="discovery" name="service" value="discovery">
+                            <label for="discovery"></label>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -248,6 +261,7 @@
 
             <section class="calendar-section" id="calendarSection" style="display: none;">
                 <h2>Lägg till i din kalender</h2>
+                <p class="calendar-description">Lägg till påminnelser i din kalender som visar vilka streamingtjänster du ska använda varje månad</p>
                 <div class="calendar-buttons">
                     <button id="googleCalendarBtn" class="calendar-btn google">
                         <img src="https://www.google.com/favicon.ico" alt="Google" class="calendar-icon">
@@ -264,6 +278,10 @@
                 </div>
             </section>
         </main>
+
+        <footer class="app-footer">
+            <p>Open source (GPL) • Ingen spårning eller data lagras • delit</p>
+        </footer>
 
     </div>
 
