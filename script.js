@@ -199,7 +199,9 @@ ${monthlySchedule}
 Länkar för uppsägning:
 ${serviceLinks}
 
-Rotera dina streamingtjänster för optimal kostnadsbesparing.`;
+Rotera dina streamingtjänster för optimal kostnadsbesparing.
+
+<a href="https://delit.github.io/stream/">https://delit.github.io/stream/</a>`;
         
         const eventUrl = `${baseUrl}&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(description)}&recur=RRULE:FREQ=MONTHLY;INTERVAL=1;BYMONTHDAY=${rotationDay}`;
         events.push(eventUrl);
@@ -255,7 +257,7 @@ METHOD:PUBLISH
         const serviceNames = plan.services.map(service => service.name).join(', ');
         const title = `Streaming Rotation`;
         const serviceLinks = generateServiceLinks();
-        const description = `Månadsupplägg:\\n${monthlySchedule}\\n\\nLänkar för uppsägning:\\n${serviceLinks}\\n\\nRotera dina streamingtjänster för optimal kostnadsbesparing.`;
+        const description = `Månadsupplägg:\\n${monthlySchedule}\\n\\nLänkar för uppsägning:\\n${serviceLinks}\\n\\nRotera dina streamingtjänster för optimal kostnadsbesparing.\\n\\n<a href="https://delit.github.io/stream/">https://delit.github.io/stream/</a>`;
         const uid = `streaming-rotation-${plan.services.map(s => s.name).join('-')}-${startDate}@streaming-rotation.com`;
         
         ics += `BEGIN:VEVENT

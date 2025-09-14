@@ -428,7 +428,7 @@ header h1 {
 }
 
 .calendar-btn {
-    padding: 12px 20px;
+    padding: 16px 20px;
     border: 2px solid #ddd;
     border-radius: 8px;
     cursor: pointer;
@@ -439,7 +439,7 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 8px;
-    min-width: 160px;
+    width: 200px;
     justify-content: center;
     background: white;
     color: #333;
@@ -537,8 +537,7 @@ header h1 {
     }
     
     .calendar-btn {
-        width: 100%;
-        max-width: 250px;
+        width: 200px;
         padding: 16px 20px;
         font-size: 0.9rem;
         min-height: 60px;
