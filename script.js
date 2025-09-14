@@ -6,8 +6,8 @@ const streamingServices = {
     prime: { name: 'Amazon Prime', favicon: 'img/amazon-prime.jpeg', price: 69 },
     max: { name: 'HBO Max', favicon: 'https://www.hbomax.com/img/hbomax/favicon.ico', price: 169 },
     apple: { name: 'Apple TV+', favicon: 'img/apple-tv.png', price: 119 },
-    skyshowtime: { name: 'SkyShowtime', favicon: 'https://www.skyshowtime.com/favicon.ico', price: 149 },
-    tv4play: { name: 'TV4 Play', favicon: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/TV4sweden_logo.svg', price: 169 },
+    skyshowtime: { name: 'SkyShowtime', favicon: 'img/skyshow.jpeg', price: 149 },
+    tv4play: { name: 'TV4 Play', favicon: 'img/TV4sweden_logo.svg', price: 169 },
 };
 
 // Global variables
