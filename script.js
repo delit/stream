@@ -91,6 +91,7 @@ function initializeEventListeners() {
                 generateRotationPlan();
                 showPreview();
             }
+            updatePriceSummary();
         });
     });
 
@@ -186,10 +187,8 @@ function updatePriceSummary() {
     if (selectedServices.length >= 1) {
         priceSummary.style.display = 'block';
         
-        // Calculate total monthly cost
-        const totalMonthlyCost = selectedServices.reduce((total, serviceId) => {
-            return total + streamingServices[serviceId].price;
-        }, 0);
+        // Calculate cost based on services per month setting
+        const totalMonthlyCost = servicesPerMonth * getAverageServicePrice();
         
         // Calculate yearly cost
         const totalYearlyCost = totalMonthlyCost * 12;
@@ -200,6 +199,17 @@ function updatePriceSummary() {
     } else {
         priceSummary.style.display = 'none';
     }
+}
+
+// Calculate average price of selected services
+function getAverageServicePrice() {
+    if (selectedServices.length === 0) return 0;
+    
+    const totalPrice = selectedServices.reduce((total, serviceId) => {
+        return total + streamingServices[serviceId].price;
+    }, 0);
+    
+    return Math.round(totalPrice / selectedServices.length);
 }
 
 // Hide preview section
