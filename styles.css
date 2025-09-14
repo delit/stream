@@ -310,10 +310,12 @@ header h1 {
 
 .rotation-month:nth-child(odd) {
     background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    border-left: 3px solid #667eea;
 }
 
 .rotation-month:nth-child(even) {
     background: linear-gradient(145deg, #f5f6f7, #e8eaed);
+    border-left: 3px solid #764ba2;
 }
 
 .rotation-month h4 {
