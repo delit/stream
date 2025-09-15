@@ -1,10 +1,10 @@
 // Streaming services configuration
 const streamingServices = {
-    netflix: { name: 'Netflix', favicon: 'https://www.netflix.com/favicon.ico', price: 199 },
-    viaplay: { name: 'Viaplay', favicon: 'https://viaplay.se/favicon.ico', price: 169 },
-    disney: { name: 'Disney+', favicon: 'https://www.disneyplus.com/favicon.ico', price: 139 },
+    netflix: { name: 'Netflix', favicon: 'img/Netflix-Symbol.png', price: 199 },
+    viaplay: { name: 'Viaplay', favicon: 'img/viaplay.jpg', price: 169 },
+    disney: { name: 'Disney+', favicon: 'img/disney.png', price: 139 },
     prime: { name: 'Amazon Prime', favicon: 'img/amazon-prime.jpeg', price: 69 },
-    max: { name: 'HBO Max', favicon: 'https://www.hbomax.com/img/hbomax/favicon.ico', price: 169 },
+    max: { name: 'HBO Max', favicon: 'img/hbo-logo.png', price: 169 },
     apple: { name: 'Apple TV+', favicon: 'img/apple-tv.png', price: 119 },
     skyshowtime: { name: 'SkyShowtime', favicon: 'img/skyshow.jpeg', price: 149 },
     tv4play: { name: 'TV4 Play', favicon: 'img/TV4sweden_logo.svg', price: 169 },
